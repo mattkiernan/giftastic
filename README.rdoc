@@ -1,0 +1,3 @@
+== Giftastic
+
+A simple gif booth web app
