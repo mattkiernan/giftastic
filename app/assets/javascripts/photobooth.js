@@ -2,7 +2,7 @@ $(document).ready(function(){
   var sayCheesey = new SayCheese('#gifbooth', { snapshots: true });
   gifObject = {"canvases_0":[], "canvases_1":[], "canvases_2":[]};
   objectCounter = ["canvases_0", "canvases_1", "canvases_2"]
-  var object_count = 0
+  object_count = 0
   var photo_count = 0
   var gif_0_index = 0
   var gif_1_index = 0
@@ -23,7 +23,6 @@ var takePhoto = function(){
     takePhotoDelay();
   }else{
     photo_count = 0;
-    incrementObjectCounter();
     stringifyObject(gifObject);
   }
 }
@@ -46,7 +45,7 @@ var delayGif2 = function(){
 
 var stringifyObject = function(currentObject){
   data = JSON.stringify(currentObject);
-  console.log(data);
+  updateImages(data);
 }
 
 // stringy = function(){
@@ -88,21 +87,33 @@ var stringifyObject = function(currentObject){
 //   }
 // }
 
-  sayCheesey.on('snapshot', function(snapshot) {
-    var dataURL = snapshot.toDataURL();
-    gifObject[objectCounter[object_count]].push(dataURL);
+sayCheesey.on('snapshot', function(snapshot) {
+  var dataURL = snapshot.toDataURL();
+  gifObject[objectCounter[object_count]].push(dataURL);
+});
+
+
+$("#take-snapshot").click(function(){
+  gifObject[objectCounter[object_count]].length = 0;
+  takePhotoDelay();
+});
+
+var updateImages = function(data){
+  id = object_count + 1
+  console.log(data);
+  $.ajax({
+    type: "PATCH",
+    url: "/images/"+id,
+    async: true,
+    data: {image:{url: data}},
+    success: incrementObjectCounter()
   });
+}
 
+sayCheesey.start();
 
-  $("#take-snapshot").click(function(){
-    gifObject[objectCounter[object_count]].length = 0;
-    takePhotoDelay();
-  });
-
-  sayCheesey.start();
-
-  // setInterval(gif_0_loop, 2000);
-  // setInterval(gif_1_loop, 2000);
-  // setInterval(gif_2_loop, 2000);
+// setInterval(gif_0_loop, 2000);
+// setInterval(gif_1_loop, 2000);
+// setInterval(gif_2_loop, 2000);
 
 });

@@ -1,4 +1,7 @@
 class ImagesController < ApplicationController
+  def show
+  end
+
   def index
     respond_to do |format|
       format.json { render json: @image }
@@ -8,9 +11,8 @@ class ImagesController < ApplicationController
 
   def update
     image = load_image_from_url
-    if image.update(image_params)
-      redirect_to root_path
-    end
+    image.update(image_params)
+    render :json => {:status => :ok}
   end
 
   def load_image_from_url

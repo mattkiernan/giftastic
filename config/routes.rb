@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resource :booth
   resource :carousel
-  resource :images
+  resources :images
+
+  root "booths#show"
 end
