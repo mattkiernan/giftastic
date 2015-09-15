@@ -3,8 +3,9 @@ class ImagesController < ApplicationController
   end
 
   def index
+    @images = Image.all
     respond_to do |format|
-      format.json { render json: @image }
+      format.json { render json: @images }
       format.html
     end
   end
