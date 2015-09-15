@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  NUMBER_OF_PHOTOS = 8
   var sayCheesey = new SayCheese('#gifbooth', { snapshots: true });
   gifObject = {"canvases_0":[], "canvases_1":[], "canvases_2":[]};
   objectCounter = ["canvases_0", "canvases_1", "canvases_2"]
@@ -14,7 +15,7 @@ $(document).ready(function(){
   }
 
 var takePhoto = function(){
-  if(photo_count < 5){
+  if(photo_count < NUMBER_OF_PHOTOS){
     sayCheesey.takeSnapshot();
     photo_count++;
     takePhotoDelay();
@@ -25,7 +26,7 @@ var takePhoto = function(){
 }
 
 var takePhotoDelay = function(){
-  setTimeout(takePhoto, 400);
+  setTimeout(takePhoto, 500);
 }
 
 var stringifyObject = function(currentObject){

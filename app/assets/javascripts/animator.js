@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  NUMBER_OF_PHOTOS = 8
+
   gif_0_index = 0
   gif_1_index = 0
   gif_2_index = 0
@@ -13,15 +15,15 @@ $(document).ready(function(){
   }
 
 var delayGif0 = function(){
-  setTimeout(gif_0_loop, 400);
+  setTimeout(gif_0_loop, 800);
 }
 
 var delayGif1 = function(){
-  setTimeout(gif_1_loop, 400);
+  setTimeout(gif_1_loop, 800);
 }
 
 var delayGif2 = function(){
-  setTimeout(gif_2_loop, 400);
+  setTimeout(gif_2_loop, 800);
 }
 
 var launchIntervals = function(){
@@ -47,7 +49,7 @@ getImages = function(){
 }
 
 gif_0_loop = function(){
-  if(gif_0_index < 5){
+  if(gif_0_index < NUMBER_OF_PHOTOS){
     $("img#image_0").find("canvas").remove();
     $("img#image_0").attr("src", (gif_0[gif_0_index]));
     gif_0_index++;
@@ -58,7 +60,7 @@ gif_0_loop = function(){
 }
 
 gif_1_loop = function(){
-  if(gif_1_index < 5){
+  if(gif_1_index < NUMBER_OF_PHOTOS){
     $("img#image_1").find("canvas").remove();
     $("img#image_1").attr("src", (gif_1[gif_1_index]));
     gif_1_index++;
@@ -69,7 +71,7 @@ gif_1_loop = function(){
 }
 
 gif_2_loop = function(){
-  if(gif_2_index < 5){
+  if(gif_2_index < NUMBER_OF_PHOTOS){
     $("img#image_2").find("canvas").remove();
     $("img#image_2").attr("src", (gif_2[gif_2_index]));
     gif_2_index++;
@@ -79,6 +81,6 @@ gif_2_loop = function(){
   }
 }
 
-setInterval(getImages(), 10000);
+setInterval(getImages, 10000);
 
 });
