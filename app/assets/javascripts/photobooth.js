@@ -2,11 +2,11 @@ $(document).ready(function(){
 
   NUMBER_OF_PHOTOS = 6
   PHOTO_DELAY = 500
-  NUMBER_OF_GIFS = 2
+  NUMBER_OF_GIFS = 1
 
   var sayCheesey = new SayCheese('#gifbooth', { snapshots: true });
-  gifObject = {"canvases_0":[], "canvases_1":[], "canvases_2":[]};
-  objectCounter = ["canvases_0", "canvases_1", "canvases_2"]
+  gifObject = {"canvases_0":[], "canvases_1":[]};
+  objectCounter = ["canvases_0", "canvases_1"]
   object_count = 0
   var photo_count = 0
 
@@ -40,6 +40,7 @@ var stringifyObject = function(currentObject){
 
 sayCheesey.on('snapshot', function(snapshot) {
   var dataURL = snapshot.toDataURL();
+  $("#do-something").toggle();
   gifObject[objectCounter[object_count]].push(dataURL);
 });
 
@@ -49,9 +50,17 @@ $("#take-snapshot").click(function(){
   takePhotoDelay();
 });
 
+$(window).keypress(function(e) {
+  if (e.keyCode === 0 || e.keyCode === 32) {
+    gifObject[objectCounter[object_count]].length = 0;
+    takePhotoDelay();
+  }
+});
+
+
 var updateImages = function(data){
   id = object_count + 1
-  console.log(data);
+    console.log(data);
   $.ajax({
     type: "PATCH",
     url: "/images/"+id,

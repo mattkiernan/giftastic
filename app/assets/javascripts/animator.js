@@ -6,14 +6,14 @@ $(document).ready(function(){
 
   gif_0_index = 0
   gif_1_index = 0
-  gif_2_index = 0
+  // gif_2_index = 0
 
   var parsePayload = function(payload_value){
     urls = payload_value["url"];
     parsed_urls = $.parseJSON(urls)
   gif_0 = parsed_urls["canvases_0"]
   gif_1 = parsed_urls["canvases_1"]
-  gif_2 = parsed_urls["canvases_2"]
+  // gif_2 = parsed_urls["canvases_2"]
   }
 
 var delayGif0 = function(){
@@ -24,14 +24,14 @@ var delayGif1 = function(){
   setTimeout(gif_1_loop, ACTION_DELAY);
 }
 
-var delayGif2 = function(){
-  setTimeout(gif_2_loop, ACTION_DELAY);
-}
+// var delayGif2 = function(){
+//   setTimeout(gif_2_loop, ACTION_DELAY);
+// }
 
 var launchIntervals = function(){
   setInterval(gif_0_loop, RELOOP_DELAY);
   setInterval(gif_1_loop, RELOOP_DELAY);
-  setInterval(gif_2_loop, RELOOP_DELAY);
+  // setInterval(gif_2_loop, RELOOP_DELAY);
 }
 
 iteratePayload = function(response){
@@ -72,16 +72,16 @@ gif_1_loop = function(){
   }
 }
 
-gif_2_loop = function(){
-  if(gif_2_index < NUMBER_OF_PHOTOS){
-    $("img#image_2").find("canvas").remove();
-    $("img#image_2").attr("src", (gif_2[gif_2_index]));
-    gif_2_index++;
-    delayGif2();
-  }else{
-    gif_2_index = 0;
-  }
-}
+// gif_2_loop = function(){
+//   if(gif_2_index < NUMBER_OF_PHOTOS){
+//     $("img#image_2").find("canvas").remove();
+//     $("img#image_2").attr("src", (gif_2[gif_2_index]));
+//     gif_2_index++;
+//     delayGif2();
+//   }else{
+//     gif_2_index = 0;
+//   }
+// }
 
 setInterval(getImages, 60000);
 

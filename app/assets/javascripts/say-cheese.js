@@ -27,7 +27,7 @@
       this.options = {
         snapshots: true,
         audio: false,
-        width: 500
+        width: 1000
       };
 
       this.setOptions(options);
