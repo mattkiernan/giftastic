@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
-  NUMBER_OF_PHOTOS = 5
+  NUMBER_OF_PHOTOS = 6
   ACTION_DELAY = 500
-  RELOOP_DELAY = 5000
+  RELOOP_DELAY = 3000
 
   gif_0_index = 0
   gif_1_index = 0
@@ -83,6 +83,6 @@ gif_2_loop = function(){
   }
 }
 
-setInterval(getImages, 10000);
+setInterval(getImages, 60000);
 
 });
