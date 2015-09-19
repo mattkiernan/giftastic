@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  NUMBER_OF_PHOTOS = 8
+  NUMBER_OF_PHOTOS = 5
   NUMBER_OF_GIFS = 2
   var sayCheesey = new SayCheese('#gifbooth', { snapshots: true });
   gifObject = {"canvases_0":[], "canvases_1":[], "canvases_2":[]};

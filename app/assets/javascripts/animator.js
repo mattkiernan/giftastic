@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
-  NUMBER_OF_PHOTOS = 8
+  NUMBER_OF_PHOTOS = 5
+  ACTION_DELAY = 500
+  RELOOP_DELAY = 5000
 
   gif_0_index = 0
   gif_1_index = 0
@@ -15,21 +17,21 @@ $(document).ready(function(){
   }
 
 var delayGif0 = function(){
-  setTimeout(gif_0_loop, 800);
+  setTimeout(gif_0_loop, ACTION_DELAY);
 }
 
 var delayGif1 = function(){
-  setTimeout(gif_1_loop, 800);
+  setTimeout(gif_1_loop, ACTION_DELAY);
 }
 
 var delayGif2 = function(){
-  setTimeout(gif_2_loop, 800);
+  setTimeout(gif_2_loop, ACTION_DELAY);
 }
 
 var launchIntervals = function(){
-  setInterval(gif_0_loop, 2000);
-  setInterval(gif_1_loop, 2000);
-  setInterval(gif_2_loop, 2000);
+  setInterval(gif_0_loop, RELOOP_DELAY);
+  setInterval(gif_1_loop, RELOOP_DELAY);
+  setInterval(gif_2_loop, RELOOP_DELAY);
 }
 
 iteratePayload = function(response){
